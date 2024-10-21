@@ -53,5 +53,6 @@
         <a href="/funcionarios/sobre-nos">Sobre Nós</a>
         <a href="/opcoes" class="voltar-btn">Voltar</a>
     </div>
+    <p>Olá {{$nome}} no que posso ajuda-lo hoje</p>
 </body>
 </html>
