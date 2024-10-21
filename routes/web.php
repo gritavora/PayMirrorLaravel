@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\HoleriteController;
 
 // Rota para a página inicial
 Route::get('/', function () {
@@ -28,3 +29,9 @@ Route::get('/funcionarios', function(){
 Route::get('/create', function(){
     return view('create');
 });
+
+// Rota Holerite
+Route::get('/funcionarios/holerite', [HoleriteController::class, 'mostrarHolerite']);
+
+
+
