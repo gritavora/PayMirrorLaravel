@@ -22,7 +22,8 @@ Route::get('/admin', function (){
 
 //routes/funcionarios.php
 Route::get('/funcionarios', function(){
-    return view('funcionarios');
+    $nome ="Hugo";//essa variavel tem de acessar o banco para mostrar o nome do usuario na hora de entrar
+    return view('funcionarios',['nome'=> $nome]);// retorno da variavem dentro de um array de arrow function
 });
 
 //routes/cadastro.php
