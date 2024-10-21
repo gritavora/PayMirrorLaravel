@@ -89,12 +89,16 @@
         <div class="funcionario">
             <strong>Nome:</strong> João Silva<br>
             <strong>Cargo:</strong> Desenvolvedor<br>
-            <strong>Jornada de Trabalho:</strong> 40 horas semanais
+            <strong>Jornada de Trabalho:</strong> 40 horas semanais<br>
+            <strong>Dias da Semana:</strong> Seg. a Sex.<br>
+            <strong>Horario :</strong>09:00 ás 16:30<br>
         </div>
         <div class="funcionario">
             <strong>Nome:</strong> Maria Oliveira<br>
             <strong>Cargo:</strong> Gerente de Projetos<br>
-            <strong>Jornada de Trabalho:</strong> 40 horas semanais
+            <strong>Jornada de Trabalho:</strong> 40 horas semanais<br>
+            <strong>Dias da Semana:</strong> Seg. a Sex.<br>
+            <strong>Horario :</strong>09:00 ás 16:30<br>
         </div>
        
 </body>
