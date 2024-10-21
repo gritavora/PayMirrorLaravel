@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Funcionário</title>
     <style>
-          body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -41,10 +41,28 @@
         .voltar-btn:hover {
             background-color: #5a2d98;
         }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 20px;
+        }
+        .info {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
         <a href="/funcionarios/holerite">Holerite</a>
         <a href="/#funcionarios/calendario">Calendário</a>
         <a href="/funcionarios/requerimentos">Requerimentos</a>
@@ -53,6 +71,25 @@
         <a href="/funcionarios/sobre-nos">Sobre Nós</a>
         <a href="/opcoes" class="voltar-btn">Voltar</a>
     </div>
-    <p>Olá {{$nome}} no que posso ajuda-lo hoje</p>
+
+    <div class="content">
+        <h1>Olá {{$nome}}, no que posso ajudá-lo hoje?</h1>
+
+        <div class="profile-container">
+            <div class="profile-pic">
+                <!-- Aqui você pode adicionar a tag <img> para a foto de perfil -->
+                <img src="{{ $fotoPerfil ?? '/path/to/default/image.jpg' }}" alt="Foto de Perfil" style="width: 100%; height: 100%; border-radius: 50%;">
+            </div>
+            <div class="info">
+                <p><strong>Nome:</strong> {{$nome}}</p>
+                <p><strong>Data de Nascimento:</strong> {{$dataNascimento ?? '---'}}</p>
+                <p><strong>Endereço:</strong> {{$endereco ?? '---'}}</p>
+                <p><strong>Data de Início de Contrato:</strong> {{$dataInicioContrato ?? '---'}}</p>
+                <p><strong>Data de Término de Contrato:</strong> {{$dataTerminoContrato ?? '---'}}</p>
+                <p><strong>Nome da Mãe:</strong> {{$nomeMae ?? '---'}}</p>
+                <p><strong>Nome do Pai:</strong> {{$nomePai ?? '---'}}</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
