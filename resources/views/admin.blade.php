@@ -70,7 +70,7 @@
 <body>
     <div class="navbar">
         <a href="/adicionar">Adicionar</a>
-        <a href="/editar">Editar</a>
+        <a href="/editar">Atualizar</a>
         <a href="excluir">Excluir</a>    
         <a href="/calendario">Calendário</a>
         <a href="/requerimentos">Requerimentos</a>
