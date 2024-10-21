@@ -73,7 +73,7 @@
     </div>
 
     <div class="content">
-        <h1>Olá {{$nome}}, no que posso ajudá-lo hoje?</h1>
+        <h1>Olá {{$nome}}, no que posso ajudar hoje?</h1>
 
         <div class="profile-container">
             <div class="profile-pic">
