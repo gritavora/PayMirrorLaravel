@@ -4,6 +4,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HoleriteController;
+use App\Http\Controllers\AvisoController;
+
 
 // Rota para a página inicial
 Route::get('/', function () {
@@ -26,6 +28,7 @@ Route::get('/funcionarios', function(){
     return view('funcionarios',['nome'=> $nome]);// retorno da variavem dentro de um array de arrow function
 });
 
+
 //routes/cadastro.php
 Route::get('/create', function(){
     return view('create');
@@ -33,6 +36,14 @@ Route::get('/create', function(){
 
 // Rota Holerite
 Route::get('/funcionarios/holerite', [HoleriteController::class, 'mostrarHolerite']);
+
+//controller do aviso 
+// Rota para exibir a página de avisos
+Route::get('/avisos', [AvisoController::class, 'index'])->name('avisos.index');
+
+// Rota para processar o envio de novos avisos
+Route::post('/avisos', [AvisoController::class, 'store'])->name('avisos.store');
+
 
 
 
