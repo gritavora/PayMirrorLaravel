@@ -1,4 +1,3 @@
-<!-- resources/views/welcome.blade.php -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,6 +20,11 @@
             font-size: 3em;
             margin-bottom: 20px;
         }
+        img {
+            width: 500px; /* Ajuste o tamanho da imagem aqui */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-bottom: 40px; /* Espaçamento entre a imagem e o botão */
+        }
         .btn-entrar {
             padding: 10px 20px;
             font-size: 1.2em;
@@ -30,6 +34,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-align: center; /* Centraliza o texto no botão */
         }
         .btn-entrar:hover {
             background-color: #0056b3;
@@ -37,7 +42,8 @@
     </style>
 </head>
 <body>
-    <h1>Bem-vindo ao PayMirror</h1>
+    <h3>Bem-vindo ao PayMirror</h3>
+    <img src="{{ asset('imgLogo/PayMirror3.png') }}" alt="PayMirror">
     <a href="/opcoes">
         <button class="btn-entrar">Entrar</button>
     </a>
