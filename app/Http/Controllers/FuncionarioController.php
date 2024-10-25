@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
+    public function holerite(Request $request)
+    {
+        // Aqui você pode buscar os dados do trabalhador
+        $trabalhador = Funcionario::findOrFail($request->user()->id); // Exemplo
+        $mes = 'Outubro'; // Defina o mês como necessário
+        $salarioBruto = 5000; // Exemplo
+        $inss = $salarioBruto * 0.08; // Exemplo
+        $irrf = ($salarioBruto - $inss) * 0.15; // Exemplo
+
+        return view('holerite', compact('trabalhador', 'mes', 'salarioBruto', 'inss', 'irrf'));
+    }
+
     // Método para listar todos os funcionários com pesquisa
     public function index(Request $request)
     {
@@ -23,7 +35,7 @@ class FuncionarioController extends Controller
     // Método para mostrar o formulário de criação
     public function create()
     {
-        return view('funcionario.create');
+        return view('create');
     }
 
     // Método para armazenar um novo funcionário
@@ -33,6 +45,7 @@ class FuncionarioController extends Controller
             'nome' => 'required',
             'cargo' => 'required',
             'jornada_trabalho' => 'required',
+            'Salario' => 'required',
         ]);
 
         Funcionario::create($request->all());
@@ -44,7 +57,7 @@ class FuncionarioController extends Controller
     public function edit($id)
     {
         $funcionario = Funcionario::findOrFail($id);
-        return view('funcionario.edit', compact('funcionario'));
+        return view('edit', compact('funcionario'));
     }
 
     // Método para atualizar um funcionário
@@ -54,10 +67,11 @@ class FuncionarioController extends Controller
             'nome' => 'required',
             'cargo' => 'required',
             'jornada_trabalho' => 'required',
+            'Salario' => 'required',
         ]);
 
         $funcionario = Funcionario::findOrFail($id);
-        $funcionario->update($request->only(['nome', 'cargo', 'jornada_trabalho']));
+        $funcionario->update($request->only(['nome', 'cargo', 'jornada_trabalho', 'Salario']));
 
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado com sucesso!');
     }
