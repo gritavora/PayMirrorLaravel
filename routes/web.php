@@ -21,14 +21,24 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+// Rota para colaboradores
+Route::get('/colaboradores', function() {
+    $nome = "Agatha";
+    return view('colaboradores', ['nome' => $nome]);
+});
+
 // Rota para a lista de funcionários
 Route::resource('funcionarios', FuncionarioController::class);
 
 // Rota Holerite
-Route::get('/funcionarios/holerite', [HoleriteController::class, 'mostrarHolerite']);
+Route::get('/colaboradores/holerite', [HoleriteController::class, 'mostrarHolerite'])->name('colaboradores.holerite');
 
 // Rota para exibir a página de avisos
 Route::get('/avisos', [AvisoController::class, 'index'])->name('avisos.index');
 
 // Rota para processar o envio de novos avisos
 Route::post('/avisos', [AvisoController::class, 'store'])->name('avisos.store');
+
+Route::get('/admin/indexAdm', function(){
+    return view('indexAdmin');
+});
