@@ -42,7 +42,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Salário Bruto</td>
+                    <td>Salário Bruto ou Salario Base</td>
                     <td>R$ {{ number_format($salarioBruto, 2, ',', '.') }}</td>
                 </tr>
                 <tr>
@@ -67,9 +67,9 @@
         <h2>Explicação dos Descontos</h2>
         <p><strong>INSS:</strong> O desconto do INSS é feito para garantir a aposentadoria do trabalhador.</p>
         <p><strong>IRRF:</strong> O Imposto de Renda Retido na Fonte é um imposto federal que incide sobre os rendimentos.</p>
-
+        
         <div class="buttons">
-            <a href="/funcionarios" class="btn">Voltar</a>
+            <a href="/colaboradores" class="btn">Voltar</a>
             <button class="btn" onclick="alert('Holerite salvo com sucesso!')">Salvar</button>
         </div>
     </div>

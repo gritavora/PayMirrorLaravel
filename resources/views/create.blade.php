@@ -4,7 +4,7 @@
     <title>Adicionar Funcionário</title>
 </head>
 <body>
-    <h1>Adicionar Funcionário</h1>
+    <h1>Gerenciar Colaboradores</h1>
 
     <form action="{{ route('funcionarios.store') }}" method="POST">
         @csrf
@@ -26,10 +26,21 @@
         @error('jornada_trabalho')
             <p style="color: red;">{{ $message }}</p>
         @enderror
+
+        <label>Salário:</label>
+        <input type="number" name="Salario" required>
+        @error('Salario')
+            <p style="color: red;">{{ $message }}</p>
+        @enderror
+
         
-        <button type="submit">Adicionar Funcionário</button>
+        <!-- Botão roxo com espaçamento inferior -->
+        <button type="submit" style="background-color: purple; color: white; margin-top: 20px;">Adicionar Funcionário</button>
     </form>
 
-    <a href="{{ route('funcionarios.index') }}">Voltar</a>
+    <!-- Botão verde -->
+    <a href="{{ route('funcionarios.index') }}">
+        <button type="button" style="background-color: green; color: white; margin-top: 20px;">Voltar</button>
+    </a>
 </body>
 </html>

@@ -53,7 +53,12 @@
         </div>
         <div class="opcao" onclick="location.href='/funcionarios'">
             <div class="icone"><i class="fas fa-users"></i></div>
-            <span>Funcionários</span>
+            <span>Gerenciar Colaboradores</span>
+        </div>
+
+        <div class="opcao" onclick="location.href='/colaboradores'">
+            <div class="icone"><i class="fas fa-users"></i></div>
+            <span>Colaboradores</span>
         </div>
     </div>
 </body>

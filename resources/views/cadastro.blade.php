@@ -21,6 +21,16 @@
         }
         .search-bar {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            margin-right: 10px;
+            font-size: 16px;
         }
         .success-message {
             color: green;
@@ -38,6 +48,13 @@
         .button:hover {
             background-color: #0056b3;
         }
+        .button-add {
+            margin-bottom: 20px;
+            background-color: purple;
+        }
+        .button-add:hover {
+            background-color: darkviolet;
+        }
     </style>
 </head>
 <body>
@@ -47,13 +64,14 @@
         <p class="success-message">{{ session('success') }}</p>
     @endif
 
+    <!-- Botão Adicionar Funcionário no canto esquerdo -->
+    <a href="{{ route('funcionarios.create') }}" class="button button-add">Admitir</a>
+
     <!-- Barra de pesquisa -->
     <form method="GET" action="{{ route('funcionarios.index') }}" class="search-bar">
         <input type="text" name="query" value="{{ old('query', $query) }}" placeholder="Pesquisar funcionários..." required>
-        <button type="submit" class="button">Pesquisar</button>
+        <button type="submit" class="button" style="background-color: green;">Pesquisar</button>
     </form>
-
-    <a href="{{ route('funcionarios.create') }}" class="button">Adicionar Funcionário</a>
 
     <table>
         <thead>
@@ -61,30 +79,36 @@
                 <th>Nome</th>
                 <th>Cargo</th>
                 <th>Jornada de Trabalho</th>
+                <th>Salário</th>
                 <th>Ações</th>
             </tr>
         </thead>
+        <a href="/opcoes" class="voltar-btn">Voltar</a>
         <tbody>
             @forelse ($funcionarios as $funcionario)
                 <tr>
                     <td>{{ $funcionario->nome }}</td>
                     <td>{{ $funcionario->cargo }}</td>
                     <td>{{ $funcionario->jornada_trabalho }}</td>
+                    <td>{{ $funcionario->Salario }}</td>
                     <td>
-                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="button">Editar</a>
-                        <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?');">
+                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="button">Atualizar</a>
+                        <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" 
+                        method="POST" style="display:inline;" 
+                        onsubmit="return confirm('Ao dispensar este funcionário os dados correpondentes serão excluidos.Deseja continuar? ');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="button" style="background-color: red;">Excluir</button>
+                            <button type="submit" class="button" style="background-color: red;">Demitir</button>
                         </form>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" style="text-align: center;">Nenhum funcionário encontrado.</td>
+                    <td colspan="5" style="text-align: center;">Nenhum funcionário encontrado.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
+    
 </body>
 </html>
