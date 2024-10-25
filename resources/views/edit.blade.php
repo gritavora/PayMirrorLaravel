@@ -76,6 +76,8 @@
         <label>Jornada de Trabalho:</label>
         <input type="text" name="jornada_trabalho" value="{{ old('jornada_trabalho', $funcionario->jornada_trabalho) }}" required>
 
+        <label>Salário:</label>
+        <input type="text" name="Salario" value="{{ old('Salario', $funcionario->Salario) }}" required>
         <button type="submit">Atualizar Funcionário</button>
     </form>
 

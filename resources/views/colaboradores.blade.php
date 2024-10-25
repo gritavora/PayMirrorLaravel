@@ -62,23 +62,22 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/funcionarios/holerite">Holerite</a>
-        <a href="/#funcionarios/calendario">Calendário</a>
-        <a href="/funcionarios/requerimentos">Requerimentos</a>
-        <a href="/funcionarios/pontos-hora">Pontos de Hora</a>
-        <a href="/funcionarios/avisos">Avisos</a>
-        <a href="/funcionarios/sobre-nos">Sobre Nós</a>
-        <a href="/opcoes" class="voltar-btn">Voltar</a>
-    </div>
+<div class="navbar">
+    <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
+    <a href="/#funcionarios/calendario">Calendário</a>
+    <a href="/funcionarios/requerimentos">Requerimentos</a>
+    <a href="/funcionarios/pontos-hora">Pontos de Hora</a>
+    <a href="/funcionarios/avisos">Avisos</a>
+    <a href="/funcionarios/sobre-nos">Sobre Nós</a>
+    <a href="/opcoes" class="voltar-btn">Voltar</a>
+</div>
 
     <div class="content">
         <h1>Olá {{$nome}}, no que posso ajudar hoje?</h1>
 
         <div class="profile-container">
             <div class="profile-pic">
-                <!-- Aqui você pode adicionar a tag <img> para a foto de perfil -->
-                <img src="{{ $fotoPerfil ?? '/path/to/default/image.jpg' }}" alt="Foto de Perfil" style="width: 100%; height: 100%; border-radius: 50%;">
+                <img src="{{ asset('imgLogo/Agatha.png') }}" alt="Foto de Perfil" style="width: 100%; height: 100%; border-radius: 50%;">
             </div>
             <div class="info">
                 <p><strong>Nome:</strong> {{$nome}}</p>
