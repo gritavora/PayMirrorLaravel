@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HoleriteController;
 use App\Http\Controllers\AvisoController;
+use App\Http\Controllers\AuthController;
 
 // Rota para a página inicial
 Route::get('/', function () {
@@ -27,6 +28,8 @@ Route::get('/colaboradores', function() {
     return view('colaboradores', ['nome' => $nome]);
 });
 
+
+
 // Rota para a lista de funcionários
 Route::resource('funcionarios', FuncionarioController::class);
 
@@ -42,3 +45,8 @@ Route::post('/avisos', [AvisoController::class, 'store'])->name('avisos.store');
 Route::get('/admin/indexAdm', function(){
     return view('indexAdmin');
 });
+
+
+
+Route::post('/login', [AuthController::class, 'login']); // Processa o login
+

@@ -74,7 +74,7 @@
         <a href="/pontos-hora">Pontos de Hora</a>
         <a href="/avisos">Avisos</a>
         <a href="/sobre-nos">Sobre Nós</a>
-        <a href="/opcoes" class="voltar-btn">Voltar</a>
+        <a href="/" class="voltar-btn">Voltar</a>
     </div>
     <div class="content">
         <h1>Dados dos Funcionários</h1>

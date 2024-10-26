@@ -3,147 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayMirror</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Centralização do corpo */
         body {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: 	#000;
-        
+            background-color: #000;
+            flex-direction: column;
         }
+        /* Estilo do título */
         h1 {
-            margin-top: 30px;
-            animation: fadein 3s forwards ;
-            align-items: center;
+            margin-top: 20px;
             color: #ffffff;
-            
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 40px;
-}
-            
-            
-            
-        
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 40px;
+            animation: fadein 3s forwards;
+            text-align: center;
+        }
+        /* Estilo da imagem */
         img {
-            ;
-            padding: 10px;
-            width: 50vh; /* Ajuste o tamanho da imagem aqui */
-            height: auto; /* Mantém a proporção da imagem */
-            margin: 0px; /* Espaçamento entre a imagem e o botão */
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            margin-bottom: 20px;
         }
-        .btn-entrar {
-            height: 50px;
-            width: 50vh;
-            font-size: 1.2em;
-            color: white;
-            background-color:#00FF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-align: center; /* Centraliza o texto no botão */
-        }
-        .btn-entrar:hover {
-            background-color: #0056b3;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)
-        }
-        .tela_ap{
-          
+        /* Centralização e estilo do contêiner principal */
+        .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50vh;
-            height: 50vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-          
-      
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80vw;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
-        .container {
-            
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            
-            max-width: 800px;
-        }
-        .opcao {
-            height: 50px;
-            width: 50vh;
-            font-size: 1.2em;
-            color: white;
-            background-color:#00FF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.5s;
-            text-align: center;
-            padding: 10px;
-            font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-        }
-        .opcao:hover {
-            transform: scale(1.05);
-            background-color: #0056b3;
-            box-shadow: 5px 5px 5px rgba(77 , 15, 85, 0.5);
-            background-color: #fff;
-            color: #C71585;
-        }
-        .icone {
+        /* Centralização e estilo do contêiner de login */
+        .login-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 25px;
-            padding-top: 10px;
+            flex-direction: column;
+            width: 100%;
         }
-        .ball {
-  
-  
-  
-}
-@keyframes fadein {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
+        /* Estilo dos inputs e botão */
+        .login-container .full-width {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        /* Estilo específico dos inputs */
+        .login-container input.full-width {
+            background-color: #444;
+            color: #fff;
+        }
+        .login-container input::placeholder {
+            color: #bbb;
+        }
+        /* Estilo específico do botão */
+        .btn-login {
+            background-color: #48b281;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-login:hover {
+            background-color: #fff;
+            color: #8c52ff;
+            transform: scale(1.05);
+        }
+        /* Animação de opacidade */
+        @keyframes fadein {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        /* Estilo responsivo para dispositivos móveis */
+        @media (max-width: 600px) {
+            h1 { font-size: 30px; }
+            img { width: 70vw; }
+        }
     </style>
 </head>
 <body>
-    <div class="tela_ap"> 
-
-        <img class="ball" src="{{ asset('imgLogo/PayMirror4.png') }}" alt="PayMirror">
-        
-        
-        <div class="container">
-            <div class="opcao" onclick="location.href='/admin'">
-                <div class="icone"><i class="fas fa-user-shield"></i></div>
-                <span>Admin</span>
-            </div>
-            <div class="opcao" onclick="location.href='/funcionarios'">
-                <div class="icone"><i class="fas fa-users"></i></div>
-                <span>Funcionários</span>
-            </div>
-        </div>
+    <div class="main-container">
+        <img src="{{ asset('imgLogo/PayMirror4.png') }}" alt="PayMirror">
         <h1>Bem-vindo ao PayMirror</h1>
+        <div class="login-container">
+            <form action="/login" method="POST">
+                @csrf
+                <!-- Campo de E-mail -->
+                <input type="email" name="email" class="full-width" placeholder="E-mail" required>
+                
+                <!-- Campo de Senha -->
+                <input type="password" name="password" class="full-width" placeholder="Senha" required>
+
+                <!-- Botão de Login -->
+                <button type="submit" class="btn-login full-width">Entrar</button>
+            </form>
+        </div>
     </div>
-    </body>
+</body>
 </html>
