@@ -51,10 +51,7 @@
             <div class="icone"><i class="fas fa-user-shield"></i></div>
             <span>Admin</span>
         </div>
-        <div class="opcao" onclick="location.href='/funcionarios'">
-            <div class="icone"><i class="fas fa-users"></i></div>
-            <span>Gerenciar Colaboradores</span>
-        </div>
+       
 
         <div class="opcao" onclick="location.href='/colaboradores'">
             <div class="icone"><i class="fas fa-users"></i></div>
