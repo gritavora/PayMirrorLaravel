@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+   
+    
     // Exibir o formulário de login
     public function showLoginForm()
     {
@@ -16,7 +18,9 @@ class UserController extends Controller
 
     // Processar o login
     public function login(Request $request)
-    {
+    { 
+
+        dd($request->all());
         // Validar os dados de entrada
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -71,8 +75,18 @@ public function uploadProfilePicture(Request $request)
     return redirect()->back()->withErrors(['profile_picture' => 'Erro ao atualizar a imagem.']);
 }
 
+public function calendario(){
+    return view ('admin/calendario');
+}
 
     
-    
+public function requerimentos()
+{
+    return view('FunRequerimentos');
+}
+
+public function calendarioColaboradores(){
+    return view('colaboradores/calendario');
+}
 
 }

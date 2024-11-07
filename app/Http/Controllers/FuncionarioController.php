@@ -84,4 +84,6 @@ class FuncionarioController extends Controller
 
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário excluído com sucesso!');
     }
+  // app/Http/Controllers/FuncionarioController.php
+
 }

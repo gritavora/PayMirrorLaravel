@@ -11,7 +11,14 @@ class AvisoController extends Controller
     {
         // Recupera os avisos armazenados na sessão, ou um array vazio se não houver
         $avisos = $request->session()->get('avisos', []);
-        return view('avisos.indexAdm', compact('avisos')); // Retorna a view com os avisos
+        return view('admin.avisos', compact('avisos')); // Retorna a view com os avisos
+    }
+
+    public function indexColaboradores(Request $request)
+    {
+        // Recupera os avisos armazenados na sessão, ou um array vazio se não houver
+        $avisos = $request->session()->get('avisos', []);
+        return view('colaboradores.avisos', compact('avisos')); // Retorna a view com os avisos
     }
 
     // Método para armazenar um novo aviso

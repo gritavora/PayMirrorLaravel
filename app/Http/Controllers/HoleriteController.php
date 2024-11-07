@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HoleriteController extends Controller
 {
-    public function mostrarHolerite()
+    public function index()
     {
         // Exemplo de dados do trabalhador
         $trabalhador = (object) [
@@ -20,6 +20,6 @@ class HoleriteController extends Controller
         $irrf = 250.00; // Exemplo de desconto do IRRF
 
         // Retornar a view com os dados
-        return view('holerite', compact('trabalhador', 'mes', 'salarioBruto', 'inss', 'irrf'));
+        return view('colaboradores.holerite', compact('trabalhador', 'mes', 'salarioBruto', 'inss', 'irrf'));
     }
 }

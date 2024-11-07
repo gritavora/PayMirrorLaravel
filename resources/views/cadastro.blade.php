@@ -171,12 +171,17 @@
     </style>
 </head>
 <body class="dark-theme">
-    <div class="navbar">
-        <a href="/calendario">Calendário</a>
-        <a href="/requerimentos">Requerimentos</a>
-        <a href="/pontos-hora">Pontos de Hora</a>
-        <a href="/avisos">Avisos</a>
-        <a href="/sobre-nos">Sobre Nós</a>
+<div class="navbar">
+        <div class="opcao" onclick="location.href='/funcionarios'">
+            <div class="icone"><i class="fas fa-users"></i></div>
+            <span>Gerenciar Colaboradores</span>
+        </div>
+        <a href="/admin/calendario">Calendário</a>
+        <a href="/admin/requerimentos">Requerimentos</a>
+        <a href="/admin/pontos-hora">Pontos de Hora</a>
+        <a href="/admin/avisos">Avisos</a>
+        <a href="/admin/sobre-nos">Sobre Nós</a>
+
         <a href="/admin" class="voltar-btn">Voltar</a>
         <button class="theme-toggle-btn" onclick="toggleTheme()">Trocar Tema</button>
     </div>

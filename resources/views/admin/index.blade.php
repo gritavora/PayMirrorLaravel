@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pontos de Hora - PayMirror</title>
+    <title>Funcionários - PayMirror</title>
     <style>
-        /* Aqui você pode adicionar o CSS que você já tem ou referenciar um arquivo CSS externo */
-        /* Incluindo o estilo da página de administração */
-
         /* Tema escuro (padrão) */
         body.dark-theme {
             font-family: Arial, sans-serif;
@@ -94,36 +91,6 @@
             background-color: #5a2d98;
         }
 
-        /* Cartão de funcionário */
-        .funcionario {
-            background: #333;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-        }
-
-        .light-theme .funcionario {
-            background: white;
-            color: black;
-        }
-
-        /* Botão de voltar */
-        .voltar-btn {
-            background-color: #6f42c1;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .voltar-btn:hover {
-            background-color: #48b281;
-        }
-
         /* Estilos da barra de pesquisa */
         .search-bar input {
             padding: 10px;
@@ -140,68 +107,75 @@
             outline: none;
         }
 
-        /* Estilo da tabela */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-
-        th {
-            background-color: #48b281;
+        /* Cartão de funcionário */
+        .funcionario {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .light-theme .funcionario {
+            background: white;
+            color: black;
+        }
+
+        /* Botão de volta */
+        .voltar-btn {
+            background-color: #6f42c1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+        
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .voltar-btn:hover {
+            background-color: #48b281;
         }
     </style>
 </head>
 <body class="dark-theme">
     <div class="navbar">
-        <a href="/calendario">Calendário</a>
-        <a href="/requerimentos">Requerimentos</a>
-        <a href="/pontos-hora">Pontos de Hora</a>
-        <a href="/avisos">Avisos</a>
-        <a href="/sobre-nos">Sobre Nós</a>
+        <div class="opcao" onclick="location.href='/funcionarios'">
+            <div class="icone"><i class="fas fa-users"></i></div>
+            <span>Gerenciar Colaboradores</span>
+        </div>
+        <a href="/admin/calendario">Calendário</a>
+        <a href="/admin/requerimentos">Requerimentos</a>
+        <a href="/admin/pontos-hora">Pontos de Hora</a>
+        <a href="/admin/avisos">Avisos</a>
+        <a href="/admin/sobre-nos">Sobre Nós</a>
+
         <a href="/" class="voltar-btn">Voltar</a>
         <button class="theme-toggle-btn" onclick="toggleTheme()">Trocar Tema</button>
     </div>
 
     <div class="content">
-        <h1>Pontos de Hora</h1>
-        <p>Aqui você pode gerenciar os pontos de hora dos funcionários.</p>
-
+        <h1>Dados dos Funcionários</h1>
         <div class="search-bar">
             <input type="text" placeholder="Pesquisar Funcionário, Cargo..." id="searchInput">
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Funcionário</th>
-                    <th>Cargo</th>
-                    <th>Pontos de Hora</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>João Silva</td>
-                    <td>Desenvolvedor</td>
-                    <td>40</td>
-                    <td><button>Editar</button> <button>Excluir</button></td>
-                </tr>
-                <tr>
-                    <td>Maria Oliveira</td>
-                    <td>Gerente de Projetos</td>
-                    <td>35</td>
-                    <td><button>Editar</button> <button>Excluir</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="funcionario">
+            <strong>Nome:</strong> João Silva<br>
+            <strong>Cargo:</strong> Desenvolvedor<br>
+            <strong>Jornada de Trabalho:</strong> 40 horas semanais<br>
+            <strong>Dias da Semana:</strong> Seg. a Sex.<br>
+            <strong>Horário:</strong> 09:00 às 16:30<br>
+        </div>
+
+        <div class="funcionario">
+            <strong>Nome:</strong> Maria Oliveira<br>
+            <strong>Cargo:</strong> Gerente de Projetos<br>
+            <strong>Jornada de Trabalho:</strong> 40 horas semanais<br>
+            <strong>Dias da Semana:</strong> Seg. a Sex.<br>
+            <strong>Horário:</strong> 09:00 às 16:30<br>
+        </div>
     </div>
 
     <script>
@@ -212,3 +186,4 @@
     </script>
 </body>
 </html>
+
