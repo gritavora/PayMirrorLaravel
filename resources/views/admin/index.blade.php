@@ -145,13 +145,14 @@
             <div class="icone"><i class="fas fa-users"></i></div>
             <span>Gerenciar Colaboradores</span>
         </div>
+        <a href="/funcionarios">Gerenciar Colaboradores</a>
         <a href="/admin/calendario">Calendário</a>
         <a href="/admin/requerimentos">Requerimentos</a>
         <a href="/admin/pontos-hora">Pontos de Hora</a>
         <a href="/admin/avisos">Avisos</a>
         <a href="/admin/sobre-nos">Sobre Nós</a>
 
-        <a href="/" class="voltar-btn">Voltar</a>
+        <a href="/" class="voltar-btn">Logout</a>
         <button class="theme-toggle-btn" onclick="toggleTheme()">Trocar Tema</button>
     </div>
 
