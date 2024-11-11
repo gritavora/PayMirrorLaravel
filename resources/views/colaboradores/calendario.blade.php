@@ -145,32 +145,20 @@
             font-weight: bold;
         }
 
-        /* Botão Voltar */
-        .voltar-btn {
-            background-color: #6f42c1;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
+       
 
-        .voltar-btn:hover {
-            background-color: #48b281;
-        }
+      
     </style>
 </head>
 <body class="dark-theme">
 <div class="navbar">
+<a href="/colaboradores" class="voltar-btn">Perfil</a>
     <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
     <a href="{{ route('colaboradores.calendario') }}">Calendário</a>
     <a href="{{ route('colaboradores.requerimentos') }}">Requerimentos</a>
     <a href="{{ route('colaboradores.pontos-hora') }}">Pontos de Hora</a>
     <a href="{{ route('colaboradores.avisos') }}">Avisos</a>
     <a href="{{ route('colaboradores.sobre-nos') }}">Sobre Nós</a>
-    <a href="/" class="voltar-btn">Voltar</a>
 </div>
 
 

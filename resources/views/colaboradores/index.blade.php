@@ -58,7 +58,7 @@
             text-decoration: none;
         }
 
-        .voltar-btn:hover {
+        .voltar-btn1:hover {
             background-color: #5a2d98;
         }
 
@@ -96,13 +96,14 @@
 </head>
 <body>
 <div class="navbar">
+<a href="/colaboradores" class="voltar-btn1">Perfil</a>
     <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
     <a href="{{ route('colaboradores.calendario') }}">Calendário</a>
     <a href="{{ route('colaboradores.requerimentos') }}">Requerimentos</a>
     <a href="{{ route('colaboradores.pontos-hora') }}">Pontos de Hora</a>
     <a href="{{ route('colaboradores.avisos') }}">Avisos</a>
     <a href="{{ route('colaboradores.sobre-nos') }}">Sobre Nós</a>
-    <a href="/" class="voltar-btn">Voltar</a>
+    <a href="/" class="voltar-btn">Logout</a>
 </div>
 
     

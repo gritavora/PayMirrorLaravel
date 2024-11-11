@@ -106,13 +106,14 @@
 <body class="dark-theme">
     <!-- Navbar -->
     <div class="navbar">
+    <a href="/colaboradores" class="voltar-btn">Perfil</a>
     <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
     <a href="{{ route('colaboradores.calendario') }}">Calendário</a>
     <a href="{{ route('colaboradores.requerimentos') }}">Requerimentos</a>
     <a href="{{ route('colaboradores.pontos-hora') }}">Pontos de Hora</a>
     <a href="{{ route('colaboradores.avisos') }}">Avisos</a>
     <a href="{{ route('colaboradores.sobre-nos') }}">Sobre Nós</a>
-    <a href="/colaboradores" class="voltar-btn">Voltar</a>
+    
 </div>
 
 
