@@ -7,54 +7,58 @@ use App\Models\Requerimento;
 
 class RequerimentoController extends Controller
 {
-   
-public function index()
-{
- // Carregar os requerimentos com os usuários
-
-    return view('admin.requerimentos');
-}
-
-public function indexColaboradores()
-{
-     // Carregar os requerimentos com os usuários
-
-    return view('colaboradores.requerimentos');
-}
-
-public function mostrarRequerimentos()
+    public function index()
     {
-        // Retorna a view do formulário de requerimento
-        return view('colaboradores.requerimentos');
+        // Carrega todos os requerimentos com os dados dos usuários relacionados
+        $requerimentos = Requerimento::with('user')->get();
+
+        // Passa os requerimentos para a view da administração
+        return view('admin.requerimentos', compact('requerimentos'));
+    }
+
+    public function indexColaboradores()
+    {
+        // Carrega os requerimentos do usuário logado
+        $requerimentos = Requerimento::where('user_id', auth()->id())->get();
+
+        // Passa os requerimentos para a view dos colaboradores
+        return view('colaboradores.requerimentos', compact('requerimentos'));
     }
 
     public function enviarRequerimento(Request $request)
     {
-        // Processa os dados do formulário
+        // Valida os dados do formulário
         $request->validate([
             'tipo' => 'required|string',
             'descricao' => 'required|string',
         ]);
 
-        // Aqui você pode salvar o requerimento no banco de dados, enviar notificações, etc.
-
-        return redirect()->route('colaboradores.requerimentos')->with('status', 'Requerimento enviado com sucesso!');
-    }
-    public function store(Request $request)
-    {
-        $request->validate([
-            'tipo' => 'required|string',
-            'descricao' => 'required|string',
-        ]);
-
-        // Salva o novo requerimento
+        // Salva o requerimento no banco de dados
         Requerimento::create([
             'tipo' => $request->tipo,
             'descricao' => $request->descricao,
+            'user_id' => auth()->id(), // Atribui o ID do usuário logado
         ]);
 
-        // Redireciona para a mesma página para atualizar a lista de requerimentos
-        return redirect()->route('colaboradores.requerimentos');
+        return redirect()->route('colaboradores.requerimentos')->with('status', 'Requerimento enviado com sucesso!');
     }
-    
+
+    public function store(Request $request)
+    {
+        // Validação dos dados
+        $request->validate([
+            'tipo' => 'required|string',
+            'descricao' => 'required|string',
+        ]);
+
+        // Criação do requerimento
+        Requerimento::create([
+            'tipo' => $request->tipo,
+            'descricao' => $request->descricao,
+            'user_id' => auth()->id(), // Captura o ID do usuário logado
+        ]);
+
+        // Redireciona para a página de requerimentos com mensagem de sucesso
+        return redirect()->route('colaboradores.requerimentos')->with('status', 'Requerimento criado com sucesso!');
+    }
 }

@@ -21,17 +21,17 @@ class FuncionarioController extends Controller
 
     // Método para listar todos os funcionários com pesquisa
     public function index(Request $request)
-    {
-        $query = $request->input('query');
+{
+    $query = $request->input('query');
 
-        $funcionarios = Funcionario::when($query, function($queryBuilder) use ($query) {
-            return $queryBuilder->where('nome', 'like', "%{$query}%")
-                                 ->orWhere('cargo', 'like', "%{$query}%");
-        })->get(); 
+    $funcionarios = Funcionario::when($query, function($queryBuilder) use ($query) {
+        return $queryBuilder->where('nome', 'like', "%{$query}%")
+                             ->orWhere('cargo', 'like', "%{$query}%");
+    })->get();
 
-        return view('cadastro', compact('funcionarios', 'query'));
-    }
 
+    return view('cadastro', compact('funcionarios', 'query'));
+}
     // Método para mostrar o formulário de criação
     public function create()
     {
