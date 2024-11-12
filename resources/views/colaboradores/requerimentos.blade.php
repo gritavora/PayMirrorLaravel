@@ -7,16 +7,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000; /* Cor de fundo escura */
-            color: white; /* Texto em branco */
+            background-color: #000;
+            color: white;
             margin: 0;
         }
 
         .navbar {
             display: flex;
-            justify-content: center; /* Centraliza sem espaços entre os botões */
-            align-items: center; /* Centraliza verticalmente */
-            background-color: #333; /* Paleta da página "welcome" */
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
             color: white;
             padding: 10px;
             position: fixed;
@@ -47,7 +47,7 @@
         }
 
         .content {
-            padding: 80px 20px 20px; /* Espaço para a navbar fixa */
+            padding: 80px 20px 20px;
         }
 
         h1 {
@@ -55,7 +55,7 @@
         }
 
         .form-container {
-            background-color: #1a1a1a; /* Fundo escuro para o formulário */
+            background-color: #1a1a1a;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -72,8 +72,8 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            background-color: #222; /* Fundo do input escuro */
-            color: white; /* Texto do input em branco */
+            background-color: #222;
+            color: white;
         }
 
         button {
@@ -107,16 +107,15 @@
     </style>
 </head>
 <body>
-<div class="navbar">
-<a href="/colaboradores" class="voltar-btn">Perfil</a>
-    <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
-    <a href="{{ route('colaboradores.calendario') }}">Calendário</a>
-    <a href="{{ route('colaboradores.requerimentos') }}">Requerimentos</a>
-    <a href="{{ route('colaboradores.pontos-hora') }}">Pontos de Hora</a>
-    <a href="{{ route('colaboradores.avisos') }}">Avisos</a>
-    <a href="{{ route('colaboradores.sobre-nos') }}">Sobre Nós</a>
-</div>
-
+    <div class="navbar">
+        <a href="/colaboradores" class="voltar-btn">Perfil</a>
+        <a href="{{ route('colaboradores.holerite') }}">Holerite</a>
+        <a href="{{ route('colaboradores.calendario') }}">Calendário</a>
+        <a href="{{ route('colaboradores.requerimentos') }}">Requerimentos</a>
+        <a href="{{ route('colaboradores.pontos-hora') }}">Pontos de Hora</a>
+        <a href="{{ route('colaboradores.avisos') }}">Avisos</a>
+        <a href="{{ route('colaboradores.sobre-nos') }}">Sobre Nós</a>
+    </div>
 
     <div class="content">
         <h1>Requerimentos</h1>
@@ -125,17 +124,17 @@
             <div class="success-message">{{ session('success') }}</div>
         @endif
 
-    
-
         <div class="form-container">
             <form action="{{ route('colaboradores.requerimentos') }}" method="POST">
                 @csrf
                 <label for="tipo">Tipo de Requerimento:</label>
                 <select name="tipo" id="tipo" required>
                     <option value="">Selecione</option>
+                    <option value="declarações">Declarações</option>
                     <option value="ferias">Férias</option>
-                    <option value="atestado">Atestado</option>
+                    <option value="atestado">Justificativa de Pendências</option>
                     <option value="outro">Outro</option>
+                    <option value="sug&rec">Sugestões/Reclamações</option>
                 </select>
 
                 <label for="descricao">Descrição:</label>
