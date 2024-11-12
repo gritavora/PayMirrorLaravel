@@ -163,8 +163,9 @@
 <div class="navbar">
         <div class="opcao" onclick="location.href='/funcionarios'">
             <div class="icone"><i class="fas fa-users"></i></div>
-            <span>Gerenciar Colaboradores</span>
+            
         </div>
+        <a href="/funcionarios">Gerenciar Colaboradores</a>
         <a href="/admin/calendario">Calendário</a>
         <a href="/admin/requerimentos">Requerimentos</a>
         <a href="/admin/pontos-hora">Pontos de Hora</a>
