@@ -216,7 +216,7 @@
                         <td>{{ $funcionario->nome }}</td>
                         <td>{{ $funcionario->cargo }}</td>
                         <td>{{ $funcionario->jornada_trabalho }}</td>
-                        <td>{{ $funcionario->Salario }}</td>
+                        <td>{{ $funcionario->salario }}</td>
                         <td>
                             <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="button">Atualizar</a>
                             <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" 
