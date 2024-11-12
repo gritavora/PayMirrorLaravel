@@ -9,6 +9,6 @@ class Funcionario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'cargo', 'jornada_trabalho'];
+    protected $fillable = ['nome', 'cargo', 'jornada_trabalho','salario'];
 
 }
