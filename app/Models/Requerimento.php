@@ -9,12 +9,17 @@ class Requerimento extends Model
 {
     use HasFactory;
 
-    // Relacionamento correto com a tabela User
+    protected $fillable = [
+        'user_id',
+        'tipo',
+        'descricao',
+        'resposta',
+        'status',
+    ];
+
+    // Relacionamento com o usuário (colaborador)
     public function user()
     {
-         return $this->belongsTo(User::class, 'user_id'); // Usando 'user_id' como chave estrangeira
+        return $this->belongsTo(User::class);
     }
-
-    // Campos que podem ser atribuídos em massa
-    protected $fillable = ['tipo', 'descricao', 'user_id'];
 }
