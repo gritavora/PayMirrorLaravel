@@ -104,6 +104,29 @@
             color: red;
             background-color: #ffe6e6;
         }
+
+        .requerimento-card {
+            background-color: #1a1a1a;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .requerimento-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .requerimento-card p {
+            margin: 5px 0;
+        }
+
+        .response-container {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -124,6 +147,7 @@
             <div class="success-message">{{ session('success') }}</div>
         @endif
 
+        <!-- Formulário para envio de novo requerimento -->
         <div class="form-container">
             <form action="{{ route('colaboradores.requerimentos') }}" method="POST">
                 @csrf
@@ -141,10 +165,40 @@
                 <textarea name="descricao" id="descricao" rows="4" required></textarea>
 
                 <button type="submit">Enviar Requerimento</button>
-                <h2>Requerimentos Enviados</h2>
-  
             </form>
         </div>
+
+        <!-- Exibição dos requerimentos enviados -->
+        <h2>Meus Requerimentos Enviados</h2>
+        @foreach($requerimentos as $requerimento)
+            <div class="requerimento-card">
+                <h3>{{ $requerimento->tipo }}</h3>
+                <p><strong>Descrição:</strong> {{ $requerimento->descricao }}</p>
+                <p><strong>Status:</strong> 
+                    @if ($requerimento->status == 'pendente')
+                        Pendente
+                    @elseif ($requerimento->status == 'respondido')
+                        Respondido
+                    @elseif ($requerimento->status == 'finalizado')
+                        Finalizado
+                    @endif
+                </p>
+
+                @if ($requerimento->status == 'respondido' || $requerimento->status == 'pendente')
+                    <div class="response-container">
+                        <h4>Resposta do Administrador:</h4>
+                        <p>{{ $requerimento->resposta ?? 'Ainda sem resposta.' }}</p>
+                    </div>
+
+                    @if ($requerimento->status == 'respondido')
+                        <form action="{{ route('colaboradores.requerimentos.finalizar', $requerimento->id) }}" method="POST">
+                            @csrf
+                            <button type="submit">Finalizar</button>
+                        </form>
+                    @endif
+                @endif
+            </div>
+        @endforeach
     </div>
 </body>
 </html>
