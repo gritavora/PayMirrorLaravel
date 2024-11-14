@@ -4,21 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateRequerimentosTable extends Migration
 {
     public function up()
-{
-    Schema::table('requerimentos', function (Blueprint $table) {
-        $table->unsignedBigInteger('user_id')->nullable(); // Adiciona a coluna user_id
-        $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // Relacionamento com a tabela users (ajuste conforme necessário)
-    });
-}
+    {
+        Schema::create('requerimentos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id'); // Colaborador que fez o requerimento
+            $table->string('tipo');
+            $table->text('descricao');
+            $table->text('resposta_admin')->nullable();
+            $table->enum('status', ['pendente', 'respondido', 'finalizado'])->default('pendente');
+            $table->timestamps();
 
-public function down()
-{
-    Schema::table('requerimentos', function (Blueprint $table) {
-        $table->dropColumn('user_id'); // Remove a coluna caso a migração seja revertida
-    });
-}
+            // Relacionamento
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
 
-};
+    public function down()
+    {
+        Schema::dropIfExists('requerimentos');
+    }
+}
