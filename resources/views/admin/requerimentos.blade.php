@@ -218,6 +218,17 @@
                 <strong>Descrição:</strong> {{ $requerimento->descricao }} <br>
                 <strong>Data de envio:</strong> {{ $requerimento->created_at->format('d/m/Y') }} <br>
                 <strong>Usuário:</strong> {{ $requerimento->user->name ?? 'Desconhecido' }} <br>
+
+                @if($requerimento->status == 'pendente')
+                    <form action="{{ route('admin.requerimentos.responder', $requerimento->id) }}" method="POST">
+                        @csrf
+                        <label for="resposta">Sua Resposta:</label>
+                        <textarea name="resposta" id="resposta" rows="4" required></textarea>
+                        <button type="submit">Responder</button>
+                    </form>
+                @elseif($requerimento->status == 'respondido')
+                    <p><strong>Resposta:</strong> {{ $requerimento->resposta }}</p>
+                @endif
             </div>
             @endforeach
         </div>
