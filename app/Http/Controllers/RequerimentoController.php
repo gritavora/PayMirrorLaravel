@@ -2,63 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Requerimento;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequerimentoController extends Controller
 {
-    public function index()
-    {
-        // Carrega todos os requerimentos com os dados dos usuários relacionados
-        $requerimentos = Requerimento::with('user')->get();
-
-        // Passa os requerimentos para a view da administração
-        return view('admin.requerimentos', compact('requerimentos'));
-    }
-
+    // Método para exibir os requerimentos do colaborador
     public function indexColaboradores()
     {
-        // Carrega os requerimentos do usuário logado
-        $requerimentos = Requerimento::where('user_id', auth()->id())->get();
-
-        // Passa os requerimentos para a view dos colaboradores
+        $requerimentos = Requerimento::where('user_id', Auth::id())->get(); // Pega os requerimentos do colaborador
         return view('colaboradores.requerimentos', compact('requerimentos'));
     }
 
-    public function enviarRequerimento(Request $request)
-    {
-        // Valida os dados do formulário
-        $request->validate([
-            'tipo' => 'required|string',
-            'descricao' => 'required|string',
-        ]);
-
-        // Salva o requerimento no banco de dados
-        Requerimento::create([
-            'tipo' => $request->tipo,
-            'descricao' => $request->descricao,
-            'user_id' => auth()->id(), // Atribui o ID do usuário logado
-        ]);
-
-        return redirect()->route('colaboradores.requerimentos')->with('status', 'Requerimento enviado com sucesso!');
-    }
-
+    // Método para salvar um requerimento
     public function store(Request $request)
     {
-        // Validação dos dados
         $request->validate([
-            'tipo' => 'required|string',
-            'descricao' => 'required|string',
+            'tipo' => 'required',
+            'descricao' => 'required',
         ]);
 
-        // Criação do requerimento
         Requerimento::create([
+            'user_id' => Auth::id(),
             'tipo' => $request->tipo,
             'descricao' => $request->descricao,
-            'user_id' => auth()->id(), // Captura o ID do usuário logado
+            'status' => 'pendente', // Status inicial
         ]);
 
-        // Redireciona para a página de requerimentos com mensagem de sucesso
-        return redirect()->route('colaboradores.requerimentos')->with('status', 'Requerimento criado com sucesso!');
+        return redirect()->route('colaboradores.requerimentos')->with('success', 'Requerimento enviado com sucesso!');
+    }
+
+    // Método para o admin ver todos os requerimentos e responder
+    public function indexAdmin()
+    {
+        $requerimentos = Requerimento::all();
+        return view('admin.requerimentos', compact('requerimentos'));
+    }
+
+    // Método para responder ao requerimento
+    public function responder(Request $request, $id)
+    {
+        $requerimento = Requerimento::findOrFail($id);
+        $requerimento->resposta = $request->resposta;
+        $requerimento->status = 'respondido';
+        $requerimento->save();
+
+        return redirect()->route('admin.requerimentos')->with('success', 'Resposta enviada!');
+    }
+
+    // Método para finalizar o requerimento pelo colaborador
+    public function finalizar($id)
+    {
+        $requerimento = Requerimento::findOrFail($id);
+        $requerimento->status = 'finalizado';
+        $requerimento->save();
+
+        return redirect()->route('colaboradores.requerimentos')->with('success', 'Requerimento finalizado com sucesso!');
     }
 }
